@@ -1,0 +1,45 @@
+<div class="rich-text-container">
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <!-- Basic text styles -->
+    <button type="button" (click)="format('bold')"><b>B</b></button>
+    <button type="button" (click)="format('italic')"><i>I</i></button>
+    <button type="button" (click)="format('underline')"><u>U</u></button>
+    <button type="button" (click)="format('strikeThrough')"><s>S</s></button>
+
+    <!-- Lists -->
+    <button type="button" (click)="format('insertUnorderedList')">• List</button>
+    <button type="button" (click)="format('insertOrderedList')">1. List</button>
+
+    <!-- Alignment -->
+    <button type="button" (click)="format('justifyLeft')">⬅</button>
+    <button type="button" (click)="format('justifyCenter')">⬌</button>
+    <button type="button" (click)="format('justifyRight')">➡</button>
+    <button type="button" (click)="format('justifyFull')">☰</button>
+
+    <!-- Font size -->
+    <select (change)="onFontSizeChange($event)">
+      <option value="2">Small</option>
+      <option value="3" selected>Normal</option>
+      <option value="5">Large</option>
+      <option value="7">Huge</option>
+    </select>
+
+    <input type="color" (change)="onColorChange($event, 'foreColor')" />
+    <input type="color" (change)="onColorChange($event, 'hiliteColor')" />
+
+    <!-- Links & Media -->
+    <button type="button" (click)="insertLink()">🔗</button>
+    <button type="button" (click)="insertImage()">🖼</button>
+
+    <!-- Code view -->
+    <button type="button" (click)="toggleCode()">{{ '<>' }}</button>
+
+    <!-- Undo/Redo -->
+    <button type="button" (click)="format('undo')">↶</button>
+    <button type="button" (click)="format('redo')">↷</button>
+  </div>
+
+  <!-- Editable content area -->
+  <div #editor class="editor" [attr.contenteditable]="!disabled" (input)="onInput($event)"></div>
+</div>

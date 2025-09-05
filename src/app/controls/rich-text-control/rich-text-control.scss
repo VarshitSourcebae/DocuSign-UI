@@ -1,0 +1,31 @@
+.rich-text-container {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+}
+
+.toolbar {
+  border-bottom: 1px solid #ddd;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.toolbar button, .toolbar select, .toolbar input[type="color"] {
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.toolbar button:hover {
+  background: #f0f0f0;
+}
+
+.editor {
+  min-height: 200px;
+  padding: 10px;
+  outline: none;
+}

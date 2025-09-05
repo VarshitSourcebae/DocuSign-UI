@@ -1,0 +1,71 @@
+<app-header></app-header>
+
+<div class="page-container">
+  <h2 class="page-title">Prepare Document for Signing</h2>
+
+  <!-- Info Banner -->
+  <div class="info-box">
+    <i class="info-icon">i</i>
+    <span>
+      On the document preview, the signature line always shows the ordering activity data,
+      even if a later signature is made as part of the contract signing.
+    </span>
+  </div>
+
+  <div class="content-wrapper" [formGroup]="form">
+    <!-- Left: Form -->
+    <div class="form-section">
+      <section class="card">
+        <h3>Recipient Details</h3>
+        <label>
+          Full Name
+          <input type="text" placeholder="Name" formControlName="recipientName" />
+          <span class="error" *ngIf="form.get('recipientName')?.touched && form.get('recipientName')?.invalid">
+            Name is required.
+          </span>
+        </label>
+        <label>
+          Email Address
+          <input type="email" placeholder="Example@example.com" formControlName="recipientEmail" />
+          <span class="error"
+            *ngIf="form.get('recipientEmail')?.touched && form.get('recipientEmail')?.hasError('required')">
+            Email is required.
+          </span>
+          <span class="error"
+            *ngIf="form.get('recipientEmail')?.touched && form.get('recipientEmail')?.hasError('email')">
+            Enter a valid email.
+          </span>
+        </label>
+      </section>
+
+      <section class="card">
+        <h3>Job Offer</h3>
+        <app-rich-text-control formControlName="content"></app-rich-text-control>
+        <span class="error" *ngIf="form.get('content')?.touched && form.get('content')?.invalid">
+          Offer content is required.
+        </span>
+      </section>
+
+      <button class="btn-primary" type="button" (click)="generateOffer()" [disabled]="form.invalid">Generate Offer
+        Letter</button>
+      <button class="btn-secondary" type="button" (click)="previewPdf()" [disabled]="!generatedPdfBlob">Preview
+        PDF</button>
+      <button class="btn-primary" type="button" (click)="sendForSignature()" 
+        >Send for signature</button>
+    </div>
+
+    <div class="pdf-preview" *ngIf="pdfUrl">
+  <iframe [src]="pdfUrl | safeUrl" width="100%" height="600px" style="border: none;"></iframe>
+</div>
+    <!-- Right: Preview -->
+    <!--*ngIf="form.value.content || form.value.recipientName || form.value.recipientEmail"-->
+    <!-- <div class="preview-section">
+      <div class="preview-card">
+        <p><strong>Offer Preview:</strong></p>
+        <p><b>Name:</b> {{ form.value.recipientName }}</p>
+        <p><b>Email:</b> {{ form.value.recipientEmail }}</p>
+        <div [innerHTML]="form.value.content"></div>
+      </div>
+    </div> -->
+  </div>
+</div>

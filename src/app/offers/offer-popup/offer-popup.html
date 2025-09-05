@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Offer Details</h2>
+<mat-dialog-content>
+  <p><strong>ID:</strong> {{ data.id }}</p>
+  <p><strong>Recipient Name:</strong> {{ data.recipientName }}</p>
+  <p><strong>Recipient Email:</strong> {{ data.recipientEmail }}</p>
+  <p><strong>Status:</strong> {{ data.status }}</p>
+  <p><strong>PDF:</strong> <a [href]="data.pdfFilePath" target="_blank">View PDF</a></p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Close</button>
+  <!-- <button mat-raised-button color="primary" (click)="createEnvelope()">Create Envelope Id</button> -->
+</mat-dialog-actions>
