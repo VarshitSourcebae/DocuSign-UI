@@ -1,3 +1,6 @@
+# Change Api end point
+In file offer.service.ts change host url to you local host
+
 # ZenithrOffers
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.2.
